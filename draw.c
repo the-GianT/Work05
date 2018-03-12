@@ -19,6 +19,7 @@
 void add_circle( struct matrix * points,
                  double cx, double cy, double cz,
                  double r, double step ) {
+  int stop = step * 100;
 }
 
 /*======== void add_curve() ==========
