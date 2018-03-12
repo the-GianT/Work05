@@ -109,6 +109,22 @@ void parse_file ( char * filename,
       
       add_curve(edges, *args, args[1], args[2], args[3], args[4], args[5], args[6], args[7], .05, HERMITE);
       
+    } else if (strncmp(line, "bezier", 6) == 0) {
+      int args[8];
+      int numinputs;
+
+      /* Read arguments: */
+      fgets(line, 255, f);
+      line[strlen(line)-1]='\0';
+      printf(":%s:\n", line);
+      numinputs = sscanf(line, "%d %d %d %d %d %d %d %d", args, args+1, args+2, args+3, args+4, args+5, args+6, args+7);
+      if (numinputs != 8) {
+	printf("Error: Invalid arguments for bezier\n");
+	return;
+      }
+      
+      add_curve(edges, *args, args[1], args[2], args[3], args[4], args[5], args[6], args[7], .05, BEZIER);
+
     } else if (strncmp(line, "line", 4) == 0) {
       int args[6];
       int numinputs;
